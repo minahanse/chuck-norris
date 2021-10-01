@@ -3,6 +3,8 @@
 
 import json, requests
 from typing import Optional
+import os
+from time import sleep
 
 def get_data() -> Optional[dict]:
     url = "https://api.chucknorris.io/jokes/random"
@@ -17,10 +19,20 @@ def get_data() -> Optional[dict]:
         return False
 
 def main():
-    jokes_data = get_data()
-    
-    if jokes_data:
-        print(jokes_data.get("value"))
+    number_of_jokes = int(os.getenv("JOKES", 1))
+
+    # Limit maximum jokes to 5.
+    if number_of_jokes > 5:
+        number_of_jokes = 5
+    for n in range(number_of_jokes):
+        jokes_data = get_data()
+        
+        if jokes_data:
+            joke = jokes_data.get("value") 
+            print(f"\n{joke}\n")
+            
+            if (number_of_jokes > 1):
+                sleep(1)
 
 if __name__ == "__main__":
     main()
