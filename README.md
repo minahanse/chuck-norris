@@ -2,9 +2,11 @@
 
 Generates random Chuck Norris jokes using the Chuck Norris Jokes API.
 
+Prints out one Chuck Norris joke, for example: "Superman is afraid of only two things, kryptonite--and Chuck Norris."
+
 ## Usage
 ```
-python chuck.py
+python app.py
 ```
 
 ### Docker
